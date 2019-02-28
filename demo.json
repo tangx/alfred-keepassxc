@@ -1,0 +1,120 @@
+{
+    "items": [
+        {
+            "valid": true,
+            "title": "int. 喂；哈罗",
+            "subtitle": "həˈləʊ; [UK] həˈləʊ; [US] helˈō",
+            "arg": "int. 喂；哈罗",
+            "mods": {
+                "cmd": {
+                    "valid": true,
+                    "arg": "-l zh_CN int. 喂；哈罗",
+                    "subtitle": "发音"
+                },
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "n. 表示问候， 惊奇或唤起注意时的用语",
+            "subtitle": "həˈləʊ; [UK] həˈləʊ; [US] helˈō",
+            "arg": "n. 表示问候， 惊奇或唤起注意时的用语",
+            "mods": {
+                "cmd": {
+                    "valid": true,
+                    "arg": "-l zh_CN n. 表示问候， 惊奇或唤起注意时的用语",
+                    "subtitle": "发音"
+                },
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "n. (Hello)人名；(法)埃洛",
+            "subtitle": "həˈləʊ; [UK] həˈləʊ; [US] helˈō",
+            "arg": "n. (Hello)人名；(法)埃洛",
+            "mods": {
+                "cmd": {
+                    "valid": true,
+                    "arg": "-l zh_CN n. (Hello)人名；(法)埃洛",
+                    "subtitle": "发音"
+                },
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "你好",
+            "subtitle": "翻译结果",
+            "arg": "你好",
+            "mods": {
+                "cmd": {
+                    "valid": true,
+                    "arg": "-l zh_CN 你好",
+                    "subtitle": "发音"
+                },
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "网络释义",
+            "subtitle": "有道词典 for Alfred"
+        },
+        {
+            "valid": true,
+            "title": "Hello",
+            "subtitle": "你好; 您好; 哈啰; 喂",
+            "arg": "Hello",
+            "mods": {
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "Hello Kitty",
+            "subtitle": "凯蒂猫; 昵称; 吉蒂猫; 匿称",
+            "arg": "Hello Kitty",
+            "mods": {
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        },
+        {
+            "valid": true,
+            "title": "Hello Bebe",
+            "subtitle": "哈乐哈乐; 乐扣乐扣",
+            "arg": "Hello Bebe",
+            "mods": {
+                "shift": {
+                    "valid": true,
+                    "arg": "http://dict.youdao.com/search?q=hello&keyfrom=fanyi.smartResult",
+                    "subtitle": "回车键打开词典网页"
+                }
+            }
+        }
+    ]
+}
