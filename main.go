@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 
 	"github.com/tobischo/gokeepasslib/v2"
 )
@@ -23,17 +24,15 @@ type KeepassxcItem struct {
 }
 
 var kpa = Keepassxc{}
-var reg = regexp.MustCompile(os.Args[1])
+
+var pat = strings.Join(os.Args[1:], ".*")
+var reg = regexp.MustCompile(pat)
 
 func main() {
 
 	// Login
 	dbfile := os.Getenv("KPA_KDBX")
-	// keyfile := "/Users/tangxin/kp.key"
 	dbpass := os.Getenv("KPA_PASS")
-
-	// fmt.Println(dbfile)
-	// fmt.Println(dbpass)
 
 	file, _ := os.Open(dbfile)
 	defer file.Close()
@@ -63,8 +62,6 @@ func walkGroups(group gokeepasslib.Group) {
 func addItems(entry gokeepasslib.Entry) {
 
 	title := entry.GetTitle()
-
-	// ok, _ := regexp.MatchString("www", title)
 
 	reg.Match([]byte(title))
 
