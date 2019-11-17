@@ -7,41 +7,20 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/tangx/alfred-keepassxc/keepassxc"
 	"github.com/tobischo/gokeepasslib/v2"
 )
 
-// Keepassxc result Json Struct
-type Keepassxc struct {
-	Items []KeepassxcItem `json:"items"`
-}
-
-// KeepassxcItem Keepassxc's Items Json Struct
-type KeepassxcItem struct {
-	Arg      string `json:"arg"`
-	Subtitle string `json:"subtitle"`
-	Title    string `json:"title"`
-	Valid    bool   `json:"valid"`
-}
-
-var kpa = Keepassxc{}
+var kpa = keepassxc.KeepassXC{}
 
 var pat = strings.Join(os.Args[1:], ".*")
 var reg = regexp.MustCompile(pat)
 
 func main() {
-
 	// Login
-	dbfile := os.Getenv("KPA_KDBX")
+	dbpath := os.Getenv("KPA_KDBX")
 	dbpass := os.Getenv("KPA_PASS")
-
-	file, _ := os.Open(dbfile)
-	defer file.Close()
-
-	db := gokeepasslib.NewDatabase()
-	db.Credentials = gokeepasslib.NewPasswordCredentials(dbpass)
-
-	_ = gokeepasslib.NewDecoder(file).Decode(db)
-	db.UnlockProtectedEntries()
+	db := keepassxc.NewClient(dbpath, dbpass)
 
 	rootGroup := db.Content.Root.Groups[0]
 	walkGroups(rootGroup)
@@ -62,17 +41,16 @@ func walkGroups(group gokeepasslib.Group) {
 func addItems(entry gokeepasslib.Entry) {
 
 	title := entry.GetTitle()
+	userName := entry.GetContent("UserName")
 
-	reg.Match([]byte(title))
-
-	if reg.Match([]byte(title)) {
-
-		kpaItem := KeepassxcItem{
+	if reg.Match([]byte(title)) || reg.Match([]byte(userName)) {
+		kpaItem := keepassxc.KeepassXCItem{
 			Valid:    true,
 			Title:    title,
 			Arg:      entry.GetPassword(),
 			Subtitle: entry.GetContent("UserName"),
 		}
+
 		kpa.Items = append(kpa.Items, kpaItem)
 	}
 }
