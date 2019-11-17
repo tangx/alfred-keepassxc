@@ -13,15 +13,11 @@ type KeepassXC struct {
 }
 
 type KeepassXCItem struct {
-	Arg      string             `json:"arg,omitempty"`
-	Mods     *KeepassXCItemMods `json:"mods,omitempty"`
-	Subtitle string             `json:"subtitle,omitempty"`
-	Title    string             `json:"title,omitempty"`
-	Valid    bool               `json:"valid,omitempty"`
-}
-
-type KeepassXCItemMods struct {
-	Mods map[string]KeepassXCItem
+	Arg      string                   `json:"arg,omitempty"`
+	Mods     map[string]KeepassXCItem `json:"mods,omitempty"`
+	Subtitle string                   `json:"subtitle,omitempty"`
+	Title    string                   `json:"title,omitempty"`
+	Valid    bool                     `json:"valid,omitempty"`
 }
 
 // NewClient return a new keepass clien

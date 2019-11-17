@@ -27,6 +27,7 @@ func main() {
 
 	kpaByte, _ := json.Marshal(kpa)
 	fmt.Printf("%s", kpaByte)
+
 }
 
 func walkGroups(group gokeepasslib.Group) {
@@ -44,11 +45,21 @@ func addItems(entry gokeepasslib.Entry) {
 	userName := entry.GetContent("UserName")
 
 	if reg.Match([]byte(title)) || reg.Match([]byte(userName)) {
+
+		ModCmd := keepassxc.KeepassXCItem{
+			Subtitle: entry.GetPassword(),
+			Arg:      entry.GetPassword(),
+			Valid:    false,
+		}
+
 		kpaItem := keepassxc.KeepassXCItem{
 			Valid:    true,
 			Title:    title,
 			Arg:      entry.GetPassword(),
 			Subtitle: entry.GetContent("UserName"),
+			Mods: map[string]keepassxc.KeepassXCItem{
+				"shift": ModCmd,
+			},
 		}
 
 		kpa.Items = append(kpa.Items, kpaItem)
