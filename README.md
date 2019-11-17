@@ -9,7 +9,7 @@
 + [x] `golang 1.12 下编译通过`
 + [x] 基础功能实现
 + [ ] 支持 key 认证
-+ [ ] 支持模糊搜索
++ [x] 支持模糊搜索
 
 ## Usage
 
@@ -20,6 +20,9 @@
 ![](images/usage1.jpg)
 
 ### Changelog
+
+**v1.0.3**
+1. 支持 title 和 username 搜索
 
 **v1.0.2**
 1. 使用 ` ` 空格表示 `.*` 通配符，模糊搜索更方便。 `kpa www com` = `kpa www.*com`
