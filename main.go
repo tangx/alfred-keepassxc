@@ -46,7 +46,7 @@ func addItems(entry gokeepasslib.Entry) {
 
 	if reg.Match([]byte(title)) || reg.Match([]byte(userName)) {
 
-		ModCmd := keepassxc.KeepassXCItem{
+		ModShift := keepassxc.KeepassXCItem{
 			Subtitle: entry.GetPassword(),
 			Arg:      entry.GetPassword(),
 			Valid:    false,
@@ -58,7 +58,7 @@ func addItems(entry gokeepasslib.Entry) {
 			Arg:      entry.GetPassword(),
 			Subtitle: entry.GetContent("UserName"),
 			Mods: map[string]keepassxc.KeepassXCItem{
-				"shift": ModCmd,
+				"shift": ModShift,
 			},
 		}
 
