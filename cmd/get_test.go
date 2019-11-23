@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_ALL(t *testing.T) {
+func Test_Get(t *testing.T) {
 	c := Client{
 		DBpath: dbpath,
 		DBpass: dbpass,
@@ -14,4 +14,8 @@ func Test_ALL(t *testing.T) {
 	// fmt.Println("HELLO")
 	result := c.Get("evernote")
 	fmt.Println(result)
+}
+
+func Test_Gen(t *testing.T) {
+	Gen()
 }

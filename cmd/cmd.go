@@ -16,3 +16,17 @@ type Client struct {
 
 var items []keepassxc.KeepassXCItem
 var wg sync.WaitGroup
+
+// Main to start
+func Main(args []string) {
+	switch args[0] {
+	case "gen":
+		{
+			Gen()
+		}
+	case "get":
+		{
+			Get(args[1:])
+		}
+	}
+}

@@ -2,7 +2,10 @@ package cmd
 
 import (
 	"encoding/json"
+	"fmt"
+	"os"
 	"regexp"
+	"strings"
 
 	"github.com/tangx/alfred-keepassxc/keepassxc"
 	"github.com/tobischo/gokeepasslib/v2"
@@ -79,4 +82,18 @@ func fillItems(ch chan gokeepasslib.Entry, patt *regexp.Regexp) {
 		}
 		items = append(items, item)
 	}
+}
+
+func Get(args []string) {
+	dbpath := os.Getenv("KPA_KDBX")
+	dbpass := os.Getenv("KPA_PASS")
+	c := Client{
+		DBpath: dbpath,
+		DBpass: dbpass,
+	}
+
+	s := strings.Join(args, "")
+	fmt.Println(s)
+	result := c.Get(s)
+	fmt.Println(result)
 }
