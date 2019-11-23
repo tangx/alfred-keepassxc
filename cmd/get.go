@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"encoding/json"
-	"fmt"
 	"os"
 	"regexp"
 	"strings"
@@ -12,7 +10,7 @@ import (
 )
 
 // Get return json string
-func (c Client) Get(reg string) (result string) {
+func (c Client) Get(reg string) {
 
 	db := keepassxc.NewClient(c.DBpath, c.DBpass)
 	ch := make(chan gokeepasslib.Entry, 5)
@@ -24,9 +22,6 @@ func (c Client) Get(reg string) (result string) {
 	go walkRoot(root, ch)
 	go fillItems(ch, patt)
 	wg.Wait()
-
-	body, _ := json.Marshal(items)
-	return string(body)
 }
 
 func walkRoot(root *gokeepasslib.RootData, ch chan gokeepasslib.Entry) {
@@ -80,7 +75,7 @@ func fillItems(ch chan gokeepasslib.Entry, patt *regexp.Regexp) {
 				"cmd":   ModCmd,
 			},
 		}
-		items = append(items, item)
+		kpcItems = append(kpcItems, item)
 	}
 }
 
@@ -93,7 +88,7 @@ func Get(args []string) {
 	}
 
 	s := strings.Join(args, "")
-	fmt.Println(s)
-	result := c.Get(s)
-	fmt.Println(result)
+
+	c.Get(s)
+	Printout()
 }

@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"encoding/json"
+	"fmt"
 	"sync"
 
 	"github.com/tangx/alfred-keepassxc/keepassxc"
@@ -14,10 +16,10 @@ type Client struct {
 	DB     *gokeepasslib.Database `json:"db,omitempty"`
 }
 
-var items []keepassxc.KeepassXCItem
+var kpcItems []keepassxc.KeepassXCItem
 var wg sync.WaitGroup
 
-// Main to start
+// Main to starts
 func Main(args []string) {
 	switch args[0] {
 	case "gen":
@@ -29,4 +31,12 @@ func Main(args []string) {
 			Get(args[1:])
 		}
 	}
+}
+
+func Printout() {
+	items := map[string][]keepassxc.KeepassXCItem{
+		"items": kpcItems,
+	}
+	body, _ := json.Marshal(items)
+	fmt.Printf("%s", body)
 }

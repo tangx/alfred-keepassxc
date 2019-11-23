@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"encoding/json"
 	"fmt"
 	"math/rand"
 	"strings"
@@ -9,7 +8,6 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/tangx/alfred-keepassxc/keepassxc"
-	"github.com/tangx/alfred-keepassxc/utils"
 )
 
 const (
@@ -47,7 +45,7 @@ func GenUUID() {
 		Arg:      UUID,
 		Subtitle: "复制",
 	}
-	items = append(items, item)
+	kpcItems = append(kpcItems, item)
 }
 
 // GenPassword return a []keepassxc.KeepassXCItem
@@ -64,7 +62,7 @@ func GenPassword(n int, complex bool) {
 		Arg:      password,
 		Subtitle: subtitle,
 	}
-	items = append(items, item)
+	kpcItems = append(kpcItems, item)
 }
 
 // Gen a password
@@ -75,12 +73,6 @@ func Gen() {
 	GenPassword(16, true)
 	GenUUID()
 
-	PrintResult()
-}
+	Printout()
 
-// PrintResult print out json result string
-func PrintResult() {
-	body, err := json.Marshal(items)
-	utils.IsError(err)
-	fmt.Println(string(body))
 }
